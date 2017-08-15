@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Header.css';
 
 class Header extends Component {
 
@@ -8,6 +9,8 @@ class Header extends Component {
       active : false
     }
   }
+
+
 
   toggleHamburger() {
     console.log("WORKING!");
@@ -19,33 +22,35 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <div className="logo">
-          <img src="http://placehold.it/50x50" alt="logo" />
-        </div>
-
-        <nav>
-          <div className="hamburger-icon" onClick={this.toggleHamburger.bind(this)}>
-            <div className={this.state.active ? "change" + "navbar-top" : "navbar-top"}></div>
-            <div className="navbar-middle"></div>
-            <div className="navbar-bottom"></div>
+        <div className="navbar">
+          <div className="logo">
+            <img src="http://placehold.it/50x50" alt="logo" />
           </div>
 
-          <ul>
-            <li>League News</li>
-            <li>The GMs</li>
-            <li>Rules</li>
-            <li>Awards</li>
-            <li>League Info</li>
-            <ul className="social-links">
-              <li>Facebook</li>
-              <li>Yahoo! League</li>
-              <li>NHL Fantasy News</li>
-            </ul>
-            <div className="admin-login">
-              <p>ADMIN LOGIN</p>
+          <nav>
+            <div className="hamburger-icon" onClick={this.toggleHamburger.bind(this)}>
+              <div className="navbar-top"></div>
+              <div className="navbar-middle"></div>
+              <div className="navbar-bottom"></div>
             </div>
+          </nav>
+        </div>
+
+        <ul className="mobile-nav">
+          <li>League News</li>
+          <li>The GMs</li>
+          <li>Rules</li>
+          <li>Awards</li>
+          <li>League Info</li>
+          <ul className="social-links">
+            <li>Facebook</li>
+            <li>Yahoo! League</li>
+            <li>NHL Fantasy News</li>
           </ul>
-        </nav>
+          <div className="admin-login">
+            <p>ADMIN LOGIN</p>
+          </div>
+        </ul>
       </header>
     );
   }

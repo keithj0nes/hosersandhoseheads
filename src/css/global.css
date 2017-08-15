@@ -1,3 +1,7 @@
+.clearfix {
+  clear: left;
+}
+
 .container {
   max-width: 960px;
 }
