@@ -13,7 +13,7 @@ class Header extends Component {
 
 
   toggleHamburger() {
-    console.log("WORKING!");
+    console.log("WORKING HELLO!");
     const currentState = this.state.active;
     console.log(currentState);
     this.setState({active : !currentState})
@@ -29,27 +29,27 @@ class Header extends Component {
 
           <nav>
             <div className="hamburger-icon" onClick={this.toggleHamburger.bind(this)}>
-              <div className="navbar-top"></div>
-              <div className="navbar-middle"></div>
-              <div className="navbar-bottom"></div>
+              <div className="hamburger-icon-top"></div>
+              <div className="hamburger-icon-middle"></div>
+              <div className="hamburger-icon-bottom"></div>
             </div>
           </nav>
         </div>
 
-        <ul className="mobile-nav">
-          <li>League News</li>
-          <li>The GMs</li>
-          <li>Rules</li>
-          <li>Awards</li>
-          <li>League Info</li>
+        <ul className="mobile-menu">
+          <li className="nav-link">League News</li>
+          <li className="nav-link">The GMs</li>
+          <li className="nav-link">Rules</li>
+          <li className="nav-link">Awards</li>
+          <li className="nav-link">League Info</li>
           <ul className="social-links">
-            <li>Facebook</li>
-            <li>Yahoo! League</li>
-            <li>NHL Fantasy News</li>
+            <li><img src="http://placehold.it/50x50" alt="League of Extraordinary Hosers Facebook" /></li>
+            <li><img src="http://placehold.it/50x50" alt="Yahoo! Fantasy Hockey" /></li>
+            <li><img src="http://placehold.it/50x50" alt="NHL Fantasy Hockey News" /></li>
           </ul>
-          <div className="admin-login">
-            <p>ADMIN LOGIN</p>
-          </div>
+          <ul className="admin-login">
+            <li>ADMIN LOGIN</li>
+          </ul>
         </ul>
       </header>
     );
