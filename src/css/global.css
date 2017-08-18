@@ -1,0 +1,16 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Metrophobic", sans-serif;
+  color: #333;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #333;
+  letter-spacing: 0.4px;
+}
+
+a {
+  text-decoration: none;
+}

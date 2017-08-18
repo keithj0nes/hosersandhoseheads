@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import '../css/blog-posts.css';
+
 class Main extends Component {
 
   constructor() {
@@ -27,9 +29,11 @@ class Main extends Component {
       <div className="App">
         { this.state.posts.map((post, key) => {
           return (
-            <div key={key}>
-              <h1>{ post.title }</h1>
-              <p>{ post.body }</p>
+            <div key={key} className="post">
+              <img src="http://placehold.it/255x125" alt="post" />
+              <h1 className="post-title">{ post.title }</h1>
+              <p className="post-date">Published on Sep 1, 2017</p>
+              <p className="post-description">{ post.body }</p>
             </div>
           )
         })}
