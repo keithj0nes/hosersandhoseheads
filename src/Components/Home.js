@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import '../css/blog-posts.css';
 
-class Main extends Component {
+class Home extends Component {
 
   constructor() {
     super()
@@ -42,4 +42,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Home;
