@@ -5,9 +5,9 @@ class Header extends Component {
 
   toggleHamburger() {
     console.log("WORKING HELLO!");
-    const showNav = document.getElementsByClassName('mobile-menu');
-    for (var i = 0; i < showNav.length; i++) {
-      showNav[i].style.marginLeft = "0";
+    const toggleNav = document.getElementsByClassName('mobile-menu');
+    for (var i = 0; i < toggleNav.length; i++) {
+      toggleNav[i].style.marginLeft = "0%";
     }
   }
 
