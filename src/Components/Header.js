@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../css/header.css';
 
 class Header extends Component {
@@ -46,7 +48,7 @@ class Header extends Component {
               <li><img src="http://placehold.it/40x40" alt="nhl news" /></li>
             </ul>
             <ul className="admin-login">
-              <li><img src="http://placehold.it/16x16" alt="Lock" />ADMIN LOGIN</li>
+              <li><Link to="/admin"><img src="http://placehold.it/16x16" alt="Lock" />ADMIN LOGIN</Link></li>
             </ul>
           </ul>
         </nav>
