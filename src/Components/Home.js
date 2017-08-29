@@ -26,7 +26,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="posts-wrapper">
         { this.state.posts.map((post, key) => {
           return (
             <div key={key} className="post">

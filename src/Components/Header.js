@@ -5,9 +5,14 @@ class Header extends Component {
 
   toggleHamburger() {
     console.log("WORKING HELLO!");
-    const toggleNav = document.getElementsByClassName('mobile-menu');
-    for (var i = 0; i < toggleNav.length; i++) {
-      toggleNav[i].style.marginLeft = "0%";
+    const toggleNav = document.getElementById('mobile-menu');
+
+    console.log(toggleNav);
+
+    if (toggleNav.style.marginLeft === "0%") {
+      toggleNav.style.marginLeft = "100%";
+    } else {
+      toggleNav.style.marginLeft = "0%";
     }
   }
 
@@ -29,7 +34,7 @@ class Header extends Component {
             </div>
           </div>
 
-          <ul className="mobile-menu">
+          <ul id="mobile-menu" className="mobile-menu">
             <li className="nav-link">League News</li>
             <li className="nav-link">The GMs</li>
             <li className="nav-link">Rules</li>
