@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import '../css/admin.css';
 
 class Admin extends Component {
+
+  postPosts(e) {
+    e.preventDefault();
+    console.log("sending post");
+    axios.post('http://localhost:9000/api/google', { title: 'Your Team Name Sucks' }).then(function(response) {
+      console.log('This is the response: ', response.data);
+      alert(response.data)
+    });
+  }
 
   render() {
     return (
@@ -34,7 +44,7 @@ class Admin extends Component {
           <p>Lorem</p>
           <input type="text" />
 
-          <button type="submit">SUBMIT</button>
+          <button type="submit" onClick={this.postPosts}>SUBMIT</button>
         </form>
 
         <Link to="/"><p>HOME</p></Link>
