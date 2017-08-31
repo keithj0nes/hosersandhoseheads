@@ -19,7 +19,7 @@ const app = express();
 // });
 
 var conn = massive.connectSync({
-  connectionString : 'postgres://postgres:@localhost:3736/hosers_and_hoseheads'
+  connectionString : 'postgres://postgres:@localhost/hosers_and_hoseheads'
 });
 
 // massive('postgres://postgres:@localhost:3737').then(instance => {
@@ -38,10 +38,11 @@ app.post('/api/google', function(req, res) {
   console.log('REQ BODY: ', req.body);
 
   // db.users.find()
-  db.run('select * from users').then(response => {
+  db.run('select * from users',(err, response) => {
     console.log(response);
+    res.send(response);
+    
   });
-  res.send('YOU SUCK LINTER');
 });
 
 app.listen(9000, () => {

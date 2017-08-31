@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+// import { Switch, Route } from 'react-router-dom'
 import './css/global.css';
 
-import Header from './components/Header';
-import Home from './components/Home';
-import Main from './components/Main';
-import Admin from './components/Admin';
+// import Header from './Components/Header';
+// import Home from './Components/Home';
+import Main from './Components/Main';
+// import Admin from './Components/Admin';
 
 
 class App extends Component {
