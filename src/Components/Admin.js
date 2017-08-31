@@ -47,14 +47,15 @@ componentDidUpdate(){
 
     if(this.state.postBody === "" || this.state.postTitle === "" || this.state.postImgUrl === ""){
       alert("please fill in all fields")
-    }
-    // axios.post('http://localhost:9000/api/google', { title: 'Your Team Name Sucks' }).then(function(response) {
-    //   console.log('This is the response: ', response.data);
-    //
-    // });
+    } else {
+      let blogPostData = this.state;
+      console.log(blogPostData, "logging BLOGPOSTDATA!");
 
-    let blogPostData = this.state;
-    console.log(blogPostData, "logging BLOGPOSTDATA!");
+      axios.post('http://localhost:9000/api/google', blogPostData).then(function(response) {
+        console.log('This is the response: ', response.data);
+      });
+    }
+
 
 
   }
@@ -75,9 +76,9 @@ componentDidUpdate(){
           <p>Lorem</p>
           <input id="news" type="checkbox" name="chx" checked={this.state.news} onChange={this.handleChange.bind(this)}/><label htmlFor="news">News</label>
           <input id="weeklyRecaps" type="checkbox" name="chx" checked={this.state.weekly} onChange={this.handleChange.bind(this)} /><label htmlFor="weeklyRecaps">Weekly Recaps</label>
-          <input id="draft" type="checkbox" /><label htmlFor="draft">Draft</label>
-          <input id="playoffs" type="checkbox" /><label htmlFor="playoffs">Playoffs</label>
-          <input id="rules" type="checkbox" /><label htmlFor="rules">Rules</label>
+          <input id="draft" type="checkbox" checked={this.state.draft} onChange={this.handleChange.bind(this)}/><label htmlFor="draft">Draft</label>
+          <input id="playoffs" type="checkbox" checked={this.state.playoffs} onChange={this.handleChange.bind(this)}/><label htmlFor="playoffs">Playoffs</label>
+          <input id="rules" type="checkbox" checked={this.state.rules} onChange={this.handleChange.bind(this)}/><label htmlFor="rules">Rules</label>
 
           <h2>Post Body</h2>
           <p>Lorem</p>

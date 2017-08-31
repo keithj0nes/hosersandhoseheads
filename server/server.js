@@ -35,14 +35,32 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.post('/api/google', function(req, res) {
-  console.log('REQ BODY: ', req.body);
+  // console.log('REQ BODY: ', req.body);
+  let b = req.body
+  const blogPost = {
+    post_title: b.postTitle,
+    post_body: b.postBody,
+    post_img_url: b.postImgUrl,
+    draft: b.draft,
+    news: b.news,
+    playoffs: b.playoffs,
+    rules: b.rules,
+    weekly_recaps: b.weeklyRecaps
+  }
 
-  // db.users.find()
-  db.run('select * from users',(err, response) => {
-    console.log(response);
-    res.send(response);
-    
-  });
+  db.blog_posts.insert(blogPost, [], (err, insertedPost) => {
+    if(err){
+      console.log(err);
+      res.status(500).send(err);
+    }
+
+    console.log(insertedPost, "here's the inserted post");
+    res.send(insertedPost)
+
+  })
+
+  // console.log(blogPost, "blogPost");
+
 });
 
 app.listen(9000, () => {
