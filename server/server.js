@@ -61,7 +61,7 @@ app.post('/api/admin/post', function(req, res) {
 
     blogPost.user_id = foundUser.id
 
-    db.blog_posts.insert(blogPost, [], (err, insertedPost) => {
+    db.blog_posts.insert(blogPost, (err, insertedPost) => {
       if(err){
         console.log(err);
         res.status(500).send(err);
