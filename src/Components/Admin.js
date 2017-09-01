@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 import '../css/admin.css';
 
@@ -9,6 +11,8 @@ class Admin extends Component {
   constructor(){
     super();
     this.initState = {
+      show: false,
+      message: "",
       postTitle: "",
       postBody: "",
       postImgUrl: "",
@@ -16,7 +20,8 @@ class Admin extends Component {
       weeklyRecaps: false,
       draft: false,
       playoffs: false,
-      rules: false
+      rules: false,
+      addedPost: []
     }
     this.state = this.initState;
   }
@@ -26,7 +31,6 @@ class Admin extends Component {
     //getting checkbox values based on its e.target.id
 
     let name = e.target.type === "checkbox" ? e.target.id : e.target.name;
-    // let id = e.target.id;
     if(e.target.type === "textarea"){
       this.setState({postBody: e.target.value})
     } else if(e.target.type === "checkbox"){
@@ -57,8 +61,11 @@ componentDidUpdate(){
 
 
         this.setState(this.initState)
-        console.log("setState changed to initState");
+        console.log("setState changed to initState to reset all values to empty");
+        this.setState({show: true, message: response.data.saved})
+
       });
+
 
 
     }
@@ -101,6 +108,13 @@ componentDidUpdate(){
 
         <Link to="/"><p>HOME</p></Link>
 
+        <SweetAlert
+          show={this.state.show}
+          title={this.state.message}
+          onConfirm={()=> {
+            this.setState({ show: false });
+          }}
+        />
       </div>
     );
   }

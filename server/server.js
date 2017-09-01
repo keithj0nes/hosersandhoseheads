@@ -67,10 +67,13 @@ app.post('/api/admin/post', function(req, res) {
         res.status(500).send(err);
       }
       console.log(insertedPost, "here's the inserted post");
-      res.send(insertedPost)
+      res.status(200).send({saved: "Saved!"})
     })
   })
 });
+
+
+
 
 app.listen(9000, () => {
   console.log('App listening on 9000');
