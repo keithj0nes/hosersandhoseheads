@@ -23,8 +23,8 @@ CREATE TABLE blog_posts (
   rules BOOLEAN,
   weekly_recaps BOOLEAN,
   user_id INTEGER REFERENCES users(id),
-  date_posted TIMESTAMP,
-  date_updated TIMESTAMP
+  date_posted TEXT,
+  date_updated TEXT
 );
 
 

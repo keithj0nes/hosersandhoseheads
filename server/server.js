@@ -3,6 +3,7 @@ let path = require('path');
 let bodyParser = require('body-parser');
 let cors = require('cors');
 let massive = require('massive');
+let moment = require('moment');
 
 const app = express();
 
@@ -34,8 +35,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-app.post('/api/google', function(req, res) {
-  // console.log('REQ BODY: ', req.body);
+app.post('/api/admin/post', function(req, res) {
+  let timeNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+  console.log(timeNow, "timeNow");
+
   let b = req.body
   const blogPost = {
     post_title: b.postTitle,
@@ -45,22 +49,27 @@ app.post('/api/google', function(req, res) {
     news: b.news,
     playoffs: b.playoffs,
     rules: b.rules,
-    weekly_recaps: b.weeklyRecaps
+    weekly_recaps: b.weeklyRecaps,
+    date_posted: timeNow
   }
 
-  db.blog_posts.insert(blogPost, [], (err, insertedPost) => {
+  db.users.findOne({firstname: "Keith"}, (err, foundUser) => {
     if(err){
       console.log(err);
       res.status(500).send(err);
     }
 
-    console.log(insertedPost, "here's the inserted post");
-    res.send(insertedPost)
+    blogPost.user_id = foundUser.id
 
+    db.blog_posts.insert(blogPost, [], (err, insertedPost) => {
+      if(err){
+        console.log(err);
+        res.status(500).send(err);
+      }
+      console.log(insertedPost, "here's the inserted post");
+      res.send(insertedPost)
+    })
   })
-
-  // console.log(blogPost, "blogPost");
-
 });
 
 app.listen(9000, () => {

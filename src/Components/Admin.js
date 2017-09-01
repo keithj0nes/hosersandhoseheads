@@ -51,7 +51,7 @@ componentDidUpdate(){
       let blogPostData = this.state;
       console.log(blogPostData, "logging BLOGPOSTDATA!");
 
-      axios.post('http://localhost:9000/api/google', blogPostData).then(function(response) {
+      axios.post('http://localhost:9000/api/admin/post', blogPostData).then(function(response) {
         console.log('This is the response: ', response.data);
       });
     }
